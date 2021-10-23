@@ -127,3 +127,23 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Qt Creator
+*pyproject.user*
+
+# Qt Creator settings
+*.creator
+
+# User project settings
+*.creator.user*
+
+# Qt Creator backups
+*.autosave
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
