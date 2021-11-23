@@ -1,0 +1,9 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="icons">
+        <file alias="logo.png">icons/Logo Finance2Go.png</file>
+    </qresource>
+    <qresource prefix="ui">
+        <file alias="main.qml">ui/main.qml</file>
+    </qresource>
+</RCC>

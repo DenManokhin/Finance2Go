@@ -1,3 +1,13 @@
 {
-    "files": ["Finance2Go/__init__.py","Finance2Go/ui/__init__.py","main.py","Finance2Go/utils/__init__.py"]
+    "files": [
+        "main.py",
+        "resources.qrc",
+        "ui/main.qml",
+        "Finance2Go/__init__.py",
+        "Finance2Go/task1/__init__.py",
+        "Finance2Go/task1/SimpleInterest.py",
+        "Finance2Go/task4/__init__.py",
+        "Finance2Go/task4/ContinuousInterest.py",
+        "Finance2Go/utils/__init__.py"
+    ]
 }
