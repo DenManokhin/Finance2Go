@@ -11,6 +11,6 @@ if __name__ == "__main__":
 
     engine = QQmlApplicationEngine()
     engine.quit.connect(app.quit)
-    engine.load('qrc:/ui/main.qml')
+    engine.load('ui/main.qml')
 
     sys.exit(app.exec())
