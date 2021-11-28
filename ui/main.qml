@@ -20,29 +20,9 @@ ApplicationWindow {
         id: validators
     }
 
-    StackView  {
-        id: swipeView
-        anchors.fill: parent
-
-        initialItem: Item {
-            id: solversListViewContainer
-        }
-        Item {
-            id: solverContainer
-        }
-    }
-
     SplitView {
         id: splitView
         anchors.fill: parent
-
-        states: [
-            State {
-                when: window.width < responsiveWidth
-                ParentChange { target: solversListView; parent: solversListViewContainer; }
-                PropertyChanges { target: splitView; visible: false }
-            }
-        ]
 
         Item {
             height: parent.height
@@ -55,32 +35,7 @@ ApplicationWindow {
                 currentIndex: -1
                 anchors.fill: parent
 
-                delegate: ItemDelegate {
-                    width: solversListView.width
-                    text: model.title
-                    font.pointSize: 10
-                    contentItem: Text {
-                        text: parent.text
-                        color: Material.foreground
-                        font: parent.font
-                        wrapMode: Text.Wrap
-                    }
-                    highlighted: ListView.isCurrentItem
-
-                    onClicked: {
-                        solversListView.currentIndex = index
-                        solverDescription.text = model.description
-                        solverView.model = model.params
-                        solverSection.visible = true
-                        computeButton.handlerName = model.handler
-                    }
-
-                    Rectangle {
-                        anchors.bottom: parent.bottom
-                        width: parent.width
-                        height: 1
-                        color: Material.foreground
-                    }
+                delegate: SolversListDelegate {
                 }
 
                 model: SolversModel {
@@ -127,62 +82,8 @@ ApplicationWindow {
                     textFormat: Text.MarkdownText
                 }
 
-                Row {
-                    id: solverGrid
-                    spacing: 20
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: 0.75 * parent.width
-
-                    Repeater {
-                        id: solverView
-                        property int paramsCount: 1
-
-                        delegate: ItemDelegate {
-
-                            property string objectName: model.name
-                            property double objectValue: model.defaultValue
-                            width: (solverGrid.width - solverGrid.spacing) / solverView.paramsCount
-                            hoverEnabled: false
-
-                            Label {
-                                text: model.name + " = "
-                                font.pointSize: 14
-                            }
-
-                            TextField {
-                                ToolTip.delay: 1000
-                                ToolTip.timeout: 5000
-                                ToolTip.visible: hovered
-                                ToolTip.text: model.description
-
-                                selectByMouse: true
-                                horizontalAlignment: TextInput.AlignRight
-                                text: "" + objectValue
-                                font.pointSize: 12
-                                leftPadding: parent.children[0].width
-                                width: parent.width
-
-                                validator: validators.getValidator(model.validator)
-
-                                onTextEdited: {
-                                    let value = parseFloat(text.replace(",", "."))
-                                    if (value < validator.bottom)
-                                        value = validator.bottom
-                                    if (value > validator.top)
-                                        value = validator.top
-                                    if (isNaN(value))
-                                        value = 0
-                                    text = "" + value
-                                    parent.objectValue = value
-                                    console.log("" + value)
-                                }
-                            }
-                        }
-
-                        onModelChanged: {
-                            paramsCount = model.count
-                        }
-                    }
+                SolverParamsForm {
+                    id: solverParamsForm
                 }
 
                 Row {
@@ -201,15 +102,7 @@ ApplicationWindow {
                         property string handlerName
 
                         onClicked: {
-                            let formData = {}
-                            for (let i = 0; i < solverGrid.children.length; i++) {
-                                let item = solverGrid.children[i]
-                                if (item.objectName) {
-                                    formData[item.objectName] = item.objectValue
-                                }
-                            }
-
-                            singleResult.visible = true
+                            let formData = solverParamsForm.getFormData()
                             singleResult.text = backend.dispatch(handlerName, formData)
                         }
                     }

@@ -1,11 +1,13 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
-    <qresource prefix="icons">
+<RCC>
+    <qresource prefix="/icons">
         <file alias="logo.png">icons/Logo Finance2Go.png</file>
     </qresource>
-    <qresource prefix="ui">
+    <qresource prefix="/ui">
         <file alias="main.qml">ui/main.qml</file>
         <file alias="SolversModel.qml">ui/SolversModel.qml</file>
         <file alias="Validators.qml">ui/Validators.qml</file>
+        <file alias="InputFieldDelegate.qml">ui/InputFieldDelegate.qml</file>
+        <file alias="SolversListDelegate.qml">ui/SolversListDelegate.qml</file>
+        <file alias="SolverParamsForm.qml">ui/SolverParamsForm.qml</file>
     </qresource>
 </RCC>
