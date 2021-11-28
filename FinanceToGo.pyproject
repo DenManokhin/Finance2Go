@@ -3,6 +3,8 @@
         "main.py",
         "resources.qrc",
         "ui/main.qml",
+        "ui/SimpleInterest",
+        "ui/Validators",
         "Finance2Go/__init__.py",
         "Finance2Go/task1/__init__.py",
         "Finance2Go/task1/SimpleInterest.py",
@@ -10,6 +12,6 @@
         "Finance2Go/task4/ContinuousInterest.py",
         "Finance2Go/utils/__init__.py",
         "Finance2Go/backend/__init__.py",
-        "Finance2Go/backend/Backend.py"
+        "Finance2Go/backend/Backend.py",
     ]
 }

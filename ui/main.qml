@@ -16,6 +16,10 @@ ApplicationWindow {
 
     Material.theme: Material.Light
 
+    Validators {
+        id: validators
+    }
+
     StackView  {
         id: swipeView
         anchors.fill: parent
@@ -158,15 +162,19 @@ ApplicationWindow {
                                 leftPadding: parent.children[0].width
                                 width: parent.width
 
-                                validator: DoubleValidator {
-                                    bottom: model.min
-                                    decimals: model.decimals
-                                    locale: "uk_UA"
-                                    notation: DoubleValidator.StandardNotation
-                                }
+                                validator: validators.getValidator(model.validator)
 
                                 onTextEdited: {
-                                    parent.objectValue = parseFloat(text.replace(",", "."))
+                                    let value = parseFloat(text.replace(",", "."))
+                                    if (value < validator.bottom)
+                                        value = validator.bottom
+                                    if (value > validator.top)
+                                        value = validator.top
+                                    if (isNaN(value))
+                                        value = 0
+                                    text = "" + value
+                                    parent.objectValue = value
+                                    console.log("" + value)
                                 }
                             }
                         }

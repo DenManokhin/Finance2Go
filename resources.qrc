@@ -6,5 +6,6 @@
     <qresource prefix="ui">
         <file alias="main.qml">ui/main.qml</file>
         <file alias="SolversModel.qml">ui/SolversModel.qml</file>
+        <file alias="Validators.qml">ui/Validators.qml</file>
     </qresource>
 </RCC>

@@ -11,25 +11,19 @@ ListModel {
                 name: "n"
                 description: "Термін угоди"
                 defaultValue: 5
-                min: 0
-                max: 100
-                decimals: 2
+                validator: "years"
             },
             ListElement {
                 name: "p"
                 description: "Початкова сума грошей"
                 defaultValue: 100000
-                min: 0
-                max: 10000000
-                decimals: 2
+                validator: "money"
             },
             ListElement {
                 name: "i"
                 description: "Відсоткова ставка"
                 defaultValue: 0.25
-                min: 0
-                max: 1
-                decimals: 4
+                validator: "percent"
             }
         ]
         handler: "getInterest"
