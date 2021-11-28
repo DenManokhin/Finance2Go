@@ -10,6 +10,9 @@ class Backend(QObject):
     def getInterest(self, n: float, p: float, i: float) -> float:
         return SimpleInterest.get_interest(n, p, i)
 
+    def getAccumulatedSum(self, n: float, p: float, i: float) -> float:
+        return SimpleInterest.get_accumulated_sum(n, p, i)
+
     @Slot(str, "QVariant", result=float)
     def dispatch(self, handlerName, params):
         variant = params.toVariant()

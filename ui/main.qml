@@ -87,13 +87,24 @@ ApplicationWindow {
                 }
 
                 Row {
+                    id: resultsForm
                     padding: 10
-                    spacing: 10
+                    spacing: 20
                     anchors.horizontalCenter: parent.horizontalCenter
+                    width: 0.75 * parent.width
+                    property alias model: resultsFormRepeater.model
 
-                    TextField {
-                        id: singleResult
-                        readOnly: true
+                    Repeater {
+                        id: resultsFormRepeater
+                        property int paramsCount: 1
+
+                        delegate: OutputFieldDelegate {
+                            width: (parent.width - parent.spacing) / resultsFormRepeater.paramsCount - computeButton.width
+                        }
+
+                        onModelChanged: {
+                            paramsCount = model.count
+                        }
                     }
 
                     Button {
@@ -103,7 +114,12 @@ ApplicationWindow {
 
                         onClicked: {
                             let formData = solverParamsForm.getFormData()
-                            singleResult.text = backend.dispatch(handlerName, formData)
+                            for (let i = 0; i < resultsForm.children.length; i++) {
+                                let item = resultsForm.children[i]
+                                if (item instanceof OutputFieldDelegate) {
+                                    item.result = backend.dispatch(item.handlerName, formData)
+                                }
+                            }
                         }
                     }
                 }

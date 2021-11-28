@@ -23,7 +23,7 @@ def get_interest(n: float, p: float, i: float) ->\
 
 
 # 2
-def simple_interest_formula(n: float, p: float, i: float) ->\
+def get_accumulated_sum(n: float, p: float, i: float) ->\
         float:
     """"
     Повертає формулу нарощення за простими відсотками.

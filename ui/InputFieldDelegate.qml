@@ -7,10 +7,10 @@ ItemDelegate {
 
     property string objectName: model.name
     property double objectValue: model.defaultValue
-    width: (parent.width - parent.spacing) / solverView.paramsCount
     hoverEnabled: false
 
     Label {
+        id: label
         text: model.name + " = "
         font.pointSize: 14
     }
@@ -25,7 +25,7 @@ ItemDelegate {
         horizontalAlignment: TextInput.AlignRight
         text: "" + objectValue
         font.pointSize: 12
-        leftPadding: parent.children[0].width
+        leftPadding: label.width
         width: parent.width
 
         validator: validators.getValidator(model.validator)

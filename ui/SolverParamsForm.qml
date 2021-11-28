@@ -4,16 +4,17 @@ import QtQuick.Controls.Material 2.12
 
 
 Row {
-    property alias model: solverView.model
+    property alias model: solverParamsRepeater.model
     spacing: 20
     anchors.horizontalCenter: parent.horizontalCenter
     width: 0.75 * parent.width
 
     Repeater {
-        id: solverView
+        id: solverParamsRepeater
         property int paramsCount: 1
 
         delegate: InputFieldDelegate {
+            width: (parent.width - parent.spacing) / solverParamsRepeater.paramsCount
         }
 
         onModelChanged: {

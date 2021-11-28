@@ -26,6 +26,15 @@ ListModel {
                 validator: "percent"
             }
         ]
-        handler: "getInterest"
+        results: [
+            ListElement {
+                name: "I"
+                handler: "getInterest"
+            },
+            ListElement {
+                name: "S"
+                handler: "getAccumulatedSum"
+            }
+        ]
     }
 }

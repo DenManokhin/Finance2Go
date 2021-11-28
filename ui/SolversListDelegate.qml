@@ -19,8 +19,8 @@ ItemDelegate {
         solversListView.currentIndex = index
         solverDescription.text = model.description
         solverParamsForm.model = model.params
+        resultsForm.model = model.results
         solverSection.visible = true
-        computeButton.handlerName = model.handler
     }
 
     Rectangle {
