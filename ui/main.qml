@@ -68,6 +68,7 @@ ApplicationWindow {
                         solverDescription.text = model.description
                         solverView.model = model.params
                         solverSection.visible = true
+                        computeButton.handlerName = model.handler
                     }
 
                     Rectangle {
@@ -122,33 +123,56 @@ ApplicationWindow {
                     textFormat: Text.MarkdownText
                 }
 
-                Grid {
-                    id: grid
-                    padding: 10
-                    columns: 3
+                Row {
+                    id: solverGrid
+                    spacing: 20
                     anchors.horizontalCenter: parent.horizontalCenter
+                    width: 0.75 * parent.width
 
                     Repeater {
                         id: solverView
+                        property int paramsCount: 1
 
-                        delegate: Item {
-                            Component.onCompleted: {
-                                while (children.length) { children[0].parent = grid; }
-                            }
+                        delegate: ItemDelegate {
+
+                            property string objectName: model.name
+                            property double objectValue: model.defaultValue
+                            width: (solverGrid.width - solverGrid.spacing) / solverView.paramsCount
+                            hoverEnabled: false
+
                             Label {
-                                text: model.name
-                                font.pointSize: 22
+                                text: model.name + " = "
+                                font.pointSize: 14
                             }
-                            Label {
-                                text: "="
-                                font.pointSize: 22
-                            }
-                            SpinBox {
+
+                            TextField {
                                 ToolTip.delay: 1000
                                 ToolTip.timeout: 5000
                                 ToolTip.visible: hovered
                                 ToolTip.text: model.description
+
+                                selectByMouse: true
+                                horizontalAlignment: TextInput.AlignRight
+                                text: "" + objectValue
+                                font.pointSize: 12
+                                leftPadding: parent.children[0].width
+                                width: parent.width
+
+                                validator: DoubleValidator {
+                                    bottom: model.min
+                                    decimals: model.decimals
+                                    locale: "uk_UA"
+                                    notation: DoubleValidator.StandardNotation
+                                }
+
+                                onTextEdited: {
+                                    parent.objectValue = parseFloat(text.replace(",", "."))
+                                }
                             }
+                        }
+
+                        onModelChanged: {
+                            paramsCount = model.count
                         }
                     }
                 }
@@ -166,9 +190,19 @@ ApplicationWindow {
                     Button {
                         id: computeButton
                         text: "Обчислити"
+                        property string handlerName
 
                         onClicked: {
+                            let formData = {}
+                            for (let i = 0; i < solverGrid.children.length; i++) {
+                                let item = solverGrid.children[i]
+                                if (item.objectName) {
+                                    formData[item.objectName] = item.objectValue
+                                }
+                            }
+
                             singleResult.visible = true
+                            singleResult.text = backend.dispatch(handlerName, formData)
                         }
                     }
                 }

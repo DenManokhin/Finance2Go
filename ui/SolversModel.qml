@@ -9,16 +9,29 @@ ListModel {
         params: [
             ListElement {
                 name: "n"
-                description: "Термін угоди, виражений у періодах"
+                description: "Термін угоди"
+                defaultValue: 5
+                min: 0
+                max: 100
+                decimals: 2
             },
             ListElement {
                 name: "p"
-                description: "Сума грошей (капітал), що даються в борг"
+                description: "Початкова сума грошей"
+                defaultValue: 100000
+                min: 0
+                max: 10000000
+                decimals: 2
             },
             ListElement {
                 name: "i"
-                description: "Відсоткова ставка віднесена до певного періоду"
+                description: "Відсоткова ставка"
+                defaultValue: 0.25
+                min: 0
+                max: 1
+                decimals: 4
             }
         ]
+        handler: "getInterest"
     }
 }
