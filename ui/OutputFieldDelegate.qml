@@ -11,7 +11,7 @@ ItemDelegate {
 
     Label {
         id: label
-        text: model.name + " = "
+        text: model.label + " = "
         font.pointSize: 14
     }
 

@@ -11,16 +11,11 @@ ItemDelegate {
 
     Label {
         id: label
-        text: model.name + " = "
+        text: model.label + " = "
         font.pointSize: 14
     }
 
     TextField {
-        ToolTip.delay: 1000
-        ToolTip.timeout: 5000
-        ToolTip.visible: hovered
-        ToolTip.text: model.description
-
         selectByMouse: true
         horizontalAlignment: TextInput.AlignRight
         text: "" + objectValue

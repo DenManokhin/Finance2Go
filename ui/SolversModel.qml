@@ -3,36 +3,36 @@ import QtQuick 2.15
 
 ListModel {
     ListElement {
-        title: "Проценти за вказану кількість років"
-        description: "Банк надав клієнту позику **p** грн. на **n** років за ставкою **i**% простих річних. Визначити проценти та нарощену на кінець терміну суму."
+        title: "Формула простих відсотків"
+        description: "Банк надав клієнту позику **p** грн. на **n** років за ставкою **i**% простих річних. Визначити проценти **I** та нарощену на кінець терміну суму **S**."
         group: "Прості відсотки"
         params: [
             ListElement {
                 name: "n"
-                description: "Термін угоди"
+                label: "n"
                 defaultValue: 5
                 validator: "years"
             },
             ListElement {
                 name: "p"
-                description: "Початкова сума грошей"
+                label: "p"
                 defaultValue: 100000
                 validator: "money"
             },
             ListElement {
                 name: "i"
-                description: "Відсоткова ставка"
+                label: "i"
                 defaultValue: 0.25
                 validator: "percent"
             }
         ]
         results: [
             ListElement {
-                name: "I"
+                label: "I"
                 handler: "getInterest"
             },
             ListElement {
-                name: "S"
+                label: "S"
                 handler: "getAccumulatedSum"
             }
         ]
