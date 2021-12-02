@@ -9,12 +9,11 @@
         "ui/SolversListDelegate.qml",
         "ui/SolverParamsForm.qml",
         "Finance2Go/__init__.py",
-        "Finance2Go/task1/__init__.py",
-        "Finance2Go/task1/SimpleInterest.py",
-        "Finance2Go/task4/__init__.py",
-        "Finance2Go/task4/ContinuousInterest.py",
-        "Finance2Go/utils/__init__.py",
+        "Finance2Go/solvers/__init__.py",
+        "Finance2Go/solvers/SimpleInterest.py",
+        "Finance2Go/solvers/ContinuousInterest.py",
         "Finance2Go/backend/__init__.py",
-        "Finance2Go/backend/Backend.py"
+        "Finance2Go/backend/Backend.py",
+        "Finance2Go/backend/SimpleInterestController.py"
     ]
 }

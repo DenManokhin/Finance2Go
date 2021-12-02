@@ -20,6 +20,7 @@ ItemDelegate {
         solverDescription.text = model.description
         solverParamsForm.model = model.params
         resultsForm.model = model.results
+        resultsForm.controllerName = model.controller
         solverSection.visible = true
     }
 

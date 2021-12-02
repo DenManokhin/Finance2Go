@@ -36,5 +36,6 @@ ListModel {
                 handler: "getAccumulatedSum"
             }
         ]
+        controller: "simpleInterest"
     }
 }

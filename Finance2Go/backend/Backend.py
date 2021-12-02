@@ -1,19 +1,14 @@
-from ..task1 import SimpleInterest
 
 from PySide6.QtCore import QObject, Slot
 
 
 class Backend(QObject):
-    def __init__(self):
+    def __init__(self, simpleInterestController):
         super().__init__()
+        self.simpleInterestController = simpleInterestController
 
-    def getInterest(self, n: float, p: float, i: float) -> float:
-        return SimpleInterest.get_interest(n, p, i)
-
-    def getAccumulatedSum(self, n: float, p: float, i: float) -> float:
-        return SimpleInterest.get_accumulated_sum(n, p, i)
-
-    @Slot(str, "QVariant", result=float)
-    def dispatch(self, handlerName, params):
+    @Slot(str, str, "QVariant", result=float)
+    def dispatch(self, controllerName, handlerName, params):
         variant = params.toVariant()
-        return self.__getattribute__(handlerName)(**variant)
+        controller = self.__getattribute__(controllerName + "Controller")
+        return controller.__getattribute__(handlerName)(**variant)

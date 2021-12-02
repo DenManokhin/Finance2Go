@@ -93,6 +93,7 @@ ApplicationWindow {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: 0.75 * parent.width
                     property alias model: resultsFormRepeater.model
+                    property string controllerName
 
                     Repeater {
                         id: resultsFormRepeater
@@ -117,7 +118,7 @@ ApplicationWindow {
                             for (let i = 0; i < resultsForm.children.length; i++) {
                                 let item = resultsForm.children[i]
                                 if (item instanceof OutputFieldDelegate) {
-                                    item.result = backend.dispatch(item.handlerName, formData)
+                                    item.result = backend.dispatch(resultsForm.controllerName, item.handlerName, formData)
                                 }
                             }
                         }
