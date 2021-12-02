@@ -66,7 +66,7 @@ def get_increased_sum_with_fractional_n(t: int, k: int, p: float, i: float) ->\
         S : float Сума боргу на момент закінчення угоди за вказану
         кількість років.
     """
-    return simple_interest_formula(t/k, p, i)
+    return get_accumulated_sum(t/k, p, i)
 
 
 # 4
