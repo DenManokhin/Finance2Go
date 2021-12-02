@@ -15,6 +15,6 @@
         "Finance2Go/task4/ContinuousInterest.py",
         "Finance2Go/utils/__init__.py",
         "Finance2Go/backend/__init__.py",
-        "Finance2Go/backend/Backend.py",
+        "Finance2Go/backend/Backend.py"
     ]
 }
