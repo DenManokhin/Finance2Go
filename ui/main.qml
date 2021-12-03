@@ -86,6 +86,48 @@ ApplicationWindow {
                     id: solverParamsForm
                 }
 
+                Column {
+                    id: repeatableParamsForm
+                    property ListModel model
+                    visible: model && model.count > 0
+                    width: 0.75 * parent.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    onModelChanged: repeatableParamsList.append()
+
+                    Row {
+                        width: parent.width
+
+                        Button {
+                            id: addParamsForm
+                            text: "Додати період"
+                            width: parent.width / 2
+                            onClicked: repeatableParamsList.append()
+                        }
+                        Button {
+                            id: removeParamsForm
+                            text: "Видалити період"
+                            width: parent.width / 2
+                            onClicked: repeatableParamsList.pop()
+                        }
+                    }
+
+                    Column {
+                        id: repeatableParamsList
+                        width: parent.width
+                        property int count: children.length
+
+                        function append() {
+                            Qt.createQmlObject("SolverParamsForm {model: repeatableParamsForm.model}", repeatableParamsList)
+                        }
+
+                        function pop() {
+                            if (count !== 0)
+                                repeatableParamsList.children[count-1].destroy()
+                        }
+                    }
+                }
+
                 Row {
                     id: resultsForm
                     padding: 10

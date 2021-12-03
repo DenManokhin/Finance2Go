@@ -19,6 +19,7 @@ ItemDelegate {
         solversListView.currentIndex = index
         solverDescription.text = model.description
         solverParamsForm.model = model.params
+        repeatableParamsForm.model = model.repeatableParams
         resultsForm.model = model.results
         resultsForm.controllerName = model.controller
         solverSection.visible = true
