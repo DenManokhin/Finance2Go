@@ -7,7 +7,7 @@ Row {
     property alias model: solverParamsRepeater.model
     spacing: 20
     anchors.horizontalCenter: parent.horizontalCenter
-    width: 0.75 * parent.width
+    width: parent.width
 
     Repeater {
         id: solverParamsRepeater

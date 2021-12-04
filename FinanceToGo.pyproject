@@ -8,6 +8,7 @@
         "ui/InputFieldDelegate",
         "ui/SolversListDelegate.qml",
         "ui/SolverParamsForm.qml",
+        "ui/RepeatableParamsForm.qml",
         "Finance2Go/__init__.py",
         "Finance2Go/solvers/__init__.py",
         "Finance2Go/solvers/SimpleInterest.py",

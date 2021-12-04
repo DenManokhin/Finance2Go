@@ -82,63 +82,22 @@ ApplicationWindow {
                     textFormat: Text.MarkdownText
                 }
 
-                SolverParamsForm {
-                    id: solverParamsForm
-                }
-
                 Column {
-                    id: repeatableParamsForm
-                    property ListModel model
-                    visible: model && model.count > 0
+                    id: inputForm
                     width: 0.75 * parent.width
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    onModelChanged: repeatableParamsList.append()
-
-                    Row {
-                        width: parent.width
-
-                        Button {
-                            id: addParamsForm
-                            text: "Додати період"
-                            width: parent.width / 2
-                            onClicked: repeatableParamsList.append()
-                        }
-                        Button {
-                            id: removeParamsForm
-                            text: "Видалити період"
-                            width: parent.width / 2
-                            onClicked: repeatableParamsList.pop()
-                        }
+                    SolverParamsForm {
+                        id: solverParamsForm
                     }
 
-                    Column {
-                        id: repeatableParamsList
-                        width: parent.width
-                        property int count: children.length
-
-                        function append() {
-                            Qt.createQmlObject("SolverParamsForm {model: repeatableParamsForm.model}", repeatableParamsList)
-                        }
-
-                        function pop() {
-                            if (count !== 0)
-                                repeatableParamsList.children[count-1].destroy()
-                        }
-
-                        function getFormData() {
-                            let forms = []
-                            for (let i=0; i<count; i++) {
-                                let form = children[i].getFormData()
-                                forms.push(form)
-                            }
-                            return forms
-                        }
+                    RepeatableParamsForm {
+                        id: repeatableParamsForm
                     }
 
                     function getFormData() {
                         let form = solverParamsForm.getFormData()
-                        form["_repeatable"] = repeatableParamsList.getFormData()
+                        form["_repeatable"] = repeatableParamsForm.getFormData()
                         return form
                     }
                 }
@@ -171,7 +130,7 @@ ApplicationWindow {
                         property string handlerName
 
                         onClicked: {
-                            let formData = repeatableParamsForm.getFormData()
+                            let formData = inputForm.getFormData()
                             for (let i = 0; i < resultsForm.children.length; i++) {
                                 let item = resultsForm.children[i]
                                 if (item instanceof OutputFieldDelegate) {
