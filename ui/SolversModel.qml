@@ -42,13 +42,13 @@ ListModel {
 
     ListElement {
         title: "Різні відсоткові ставки для різних періодів"
-        description: "Банк надав клієнту позику **p** грн. на **n** років за ставкою **i**% простих річних. Визначити проценти **I** та нарощену на кінець терміну суму **S**."
+        description: "Фінансовою угодою передбачено такі умови нарахування простих відсотків на депозит: перші **n** років – **i**% річних, наступні... . Визначити множник нарощення та нарощену суму, якщо початковий вклад становив **p** грн."
         group: "Прості відсотки"
         params: [
             ListElement {
                 name: "p"
                 label: "p"
-                defaultValue: 100000
+                defaultValue: 10000
                 validator: "money"
             }
         ]
@@ -56,24 +56,20 @@ ListModel {
             ListElement {
                 name: "n"
                 label: "n"
-                defaultValue: 5
+                defaultValue: 0.25
                 validator: "years"
             },
             ListElement {
                 name: "i"
                 label: "i"
-                defaultValue: 0.25
+                defaultValue: 0.15
                 validator: "percent"
             }
         ]
         results: [
             ListElement {
-                label: "I"
-                handler: "getInterest"
-            },
-            ListElement {
                 label: "S"
-                handler: "getAccumulatedSum"
+                handler: "getAccumulatedValueForDifferentPeriods"
             }
         ]
         controller: "simpleInterest"

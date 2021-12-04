@@ -1,3 +1,4 @@
+import numpy as np
 from ..solvers import SimpleInterest
 
 
@@ -10,3 +11,6 @@ class SimpleInterestController:
 
     def getAccumulatedSum(self, n: float, p: float, i: float) -> float:
         return SimpleInterest.get_accumulated_sum(n, p, i)
+
+    def getAccumulatedValueForDifferentPeriods(self, n: np.array, p: float, i: np.array) -> float:
+        return SimpleInterest.get_increased_sum_for_different_periods(n, p, i)

@@ -125,6 +125,21 @@ ApplicationWindow {
                             if (count !== 0)
                                 repeatableParamsList.children[count-1].destroy()
                         }
+
+                        function getFormData() {
+                            let forms = []
+                            for (let i=0; i<count; i++) {
+                                let form = children[i].getFormData()
+                                forms.push(form)
+                            }
+                            return forms
+                        }
+                    }
+
+                    function getFormData() {
+                        let form = solverParamsForm.getFormData()
+                        form["_repeatable"] = repeatableParamsList.getFormData()
+                        return form
                     }
                 }
 
@@ -156,7 +171,7 @@ ApplicationWindow {
                         property string handlerName
 
                         onClicked: {
-                            let formData = solverParamsForm.getFormData()
+                            let formData = repeatableParamsForm.getFormData()
                             for (let i = 0; i < resultsForm.children.length; i++) {
                                 let item = resultsForm.children[i]
                                 if (item instanceof OutputFieldDelegate) {
