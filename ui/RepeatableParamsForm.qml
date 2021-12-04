@@ -8,8 +8,6 @@ Column {
     visible: model && model.count > 0
     width: parent.width
 
-    onModelChanged: repeatableParamsList.append()
-
     Row {
         width: parent.width
 
@@ -40,12 +38,14 @@ Column {
             if (count !== 0)
                 repeatableParamsList.children[count-1].destroy()
         }
+
+        Component.onCompleted: append()
     }
 
     function getFormData() {
         let forms = []
-        for (let i=0; i<count; i++) {
-            let form = children[i].getFormData()
+        for (let i=0; i<repeatableParamsList.count; i++) {
+            let form = repeatableParamsList.children[i].getFormData()
             forms.push(form)
         }
         return forms
