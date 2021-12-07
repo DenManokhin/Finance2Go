@@ -271,23 +271,6 @@ def get_nominal_account_rate(de: float, m: int) -> float:
     return m(1 - (1 - de) ^ (1 / m))
 
 
-# 34 - номінальна річна облікова ставка
-def get_effective_discount_rate(de: float, m: int) -> float:
-    """ "
-    Parameters
-    ----------
-    de : float
-        Ефективна облікова ставка
-    m: int
-        Кількість нарахувань у році
-    Returns
-    -------
-    f: float
-        номінальна річна облікова ставка
-    """
-    return m(1 - (1 - de) ^ (1 / m))
-
-
 # 35 - нарощення за складною обліковою ставкою
 def get_increase_amount(P: float, d: float, n: int) -> float:
     """ "
