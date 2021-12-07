@@ -23,7 +23,7 @@ def get_interest(n: float, p: float, i: float) ->\
 
 
 # 2
-def simple_interest_formula(n: float, p: float, i: float) ->\
+def get_accumulated_sum(n: float, p: float, i: float) ->\
         float:
     """"
     Повертає формулу нарощення за простими відсотками.
@@ -45,7 +45,7 @@ def simple_interest_formula(n: float, p: float, i: float) ->\
 
 
 # 3
-def get_increased_sum_with_fractional_n(t: int, k: int, p: float, i: float) ->\
+def get_accumulated_value_with_fractional_n(t: int, k: int, p: float, i: float) ->\
         float:
     """"
     Повертає нарощену суму, взяши у формулі нарощення за простими
@@ -66,11 +66,11 @@ def get_increased_sum_with_fractional_n(t: int, k: int, p: float, i: float) ->\
         S : float Сума боргу на момент закінчення угоди за вказану
         кількість років.
     """
-    return simple_interest_formula(t/k, p, i)
+    return get_accumulated_sum(t/k, p, i)
 
 
 # 4
-def get_increased_sum_for_different_periods(n: np.array, p: float,
+def get_accumulated_value_for_different_periods(n: np.array, p: float,
                                             i: np.array) -> float:
     """"
     Повертає нарощену суму, де відсоткові ставки встановлюються
@@ -92,7 +92,7 @@ def get_increased_sum_for_different_periods(n: np.array, p: float,
 
 
 # 5
-def get_increased_sum_with_reinvestment(n: np.array, p: float, i: np.array) \
+def get_accumulated_value_with_reinvestment(n: np.array, p: float, i: np.array) \
         -> float:
     """"
     Повертає нарощену суму з капіталізацією.
@@ -262,8 +262,8 @@ def get_discount_rate(n: float, s: float, p: float) -> float:
 
 
 # 13
-def get_increased_sum_with_discount_rate(n: float, p: float,
-                                            d: float) -> float:
+def get_accumulated_value_with_discount_rate(n: float, p: float,
+                                             d: float) -> float:
     """"
     Повертає нарощену суму.
 

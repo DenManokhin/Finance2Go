@@ -2,8 +2,8 @@ import numpy as np
 
 
 # 1
-def get_increased_sum_with_growth_force(n: int, p: float,
-                                        delta: float) -> float:
+def get_accumulated_value_with_growth_force(n: int, p: float,
+                                            delta: float) -> float:
     """"
     Повертає нарощена суму у випадку використання сили росту.
 
@@ -119,11 +119,12 @@ def get_build_up_multiplier_for_exp_function(n: int, a: float,
 
 
 # 7
-def get_increased_sum_with_changeable_growth_force(n: int,
-                                                   a: float,
-                                                   p: float,
-                                                   delta: float,
-                                                   func_type: str) -> float:
+def get_accumulated_value_with_changeable_growth_force(n: int,
+                                                       a: float,
+                                                       p: float,
+                                                       delta: float,
+                                                       func_type: str) -> \
+        float:
     """"
     Повертає нарощена суму у випадку використання змінної сили росту.
 

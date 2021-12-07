@@ -1,8 +1,23 @@
-# This Python file uses the following encoding: utf-8
-from Finance2Go.task1.SimpleInterest import *
-from Finance2Go.task4.ContinuousInterest import *
+import sys
+
+from PySide6.QtGui import QGuiApplication, QIcon
+from PySide6.QtQml import QQmlApplicationEngine
+
+from Finance2Go import backend
+
+import resources
 
 if __name__ == "__main__":
-    print(get_interest(5, 100000, 0.25))
-    print(get_increased_sum_with_changeable_growth_force(7, 0.05, 10000, 0.05,
-                                                         "linear"))
+    app = QGuiApplication(sys.argv)
+    app.setWindowIcon(QIcon(':/icons/logo.png'))
+
+    engine = QQmlApplicationEngine()
+    engine.quit.connect(app.quit)
+    engine.load('ui/main.qml')
+
+    backendObj = backend.Backend(
+        backend.SimpleInterestController()
+    )
+    engine.rootObjects()[0].setProperty("backend", backendObj)
+
+    sys.exit(app.exec())

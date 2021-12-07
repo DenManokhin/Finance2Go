@@ -1,3 +1,20 @@
 {
-    "files": ["Finance2Go/__init__.py","Finance2Go/ui/__init__.py","main.py","Finance2Go/utils/__init__.py"]
+    "files": [
+        "main.py",
+        "resources.qrc",
+        "ui/main.qml",
+        "ui/SimpleInterest",
+        "ui/Validators",
+        "ui/InputFieldDelegate",
+        "ui/SolversListDelegate.qml",
+        "ui/SolverParamsForm.qml",
+        "ui/RepeatableParamsForm.qml",
+        "Finance2Go/__init__.py",
+        "Finance2Go/solvers/__init__.py",
+        "Finance2Go/solvers/SimpleInterest.py",
+        "Finance2Go/solvers/ContinuousInterest.py",
+        "Finance2Go/backend/__init__.py",
+        "Finance2Go/backend/Backend.py",
+        "Finance2Go/backend/SimpleInterestController.py"
+    ]
 }
