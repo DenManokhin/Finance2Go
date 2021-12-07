@@ -2,7 +2,7 @@ import numpy as np
 
 
 # 17 - формула нарощення складних відсотків
-def get_accrued_amount(n: int, P: float, i: float) -> float:
+def get_accumulated_value(n: int, P: float, i: float) -> float:
     """ "
     Повертає нарощену суму на певну кількість років
 
@@ -23,7 +23,7 @@ def get_accrued_amount(n: int, P: float, i: float) -> float:
 
 
 # 18 - формула нарощення складних відсотків
-def get_accrued_amount_general(n: int, P: float, i: float) -> float:
+def get_accumulated_value_general(n: int, P: float, i: float) -> float:
     """ "
     Коли потрібно вирахувати проценти за весь період нарощення за складними відсотками
 
@@ -44,7 +44,7 @@ def get_accrued_amount_general(n: int, P: float, i: float) -> float:
 
 
 # 20 - змішаний метод, коли n - дробове число
-def get_accrued_amount_mixed(P: float, i: float, c: int, d: float) -> float:
+def get_accumulated_value_mixed(P: float, i: float, c: int, d: float) -> float:
     """ "
     Коли потрібно вирахувати проценти за весь період нарощення за складними відсотками
 
@@ -67,7 +67,7 @@ def get_accrued_amount_mixed(P: float, i: float, c: int, d: float) -> float:
 
 
 # 21 - нарощення за номінальною ставкою
-def get_accrued_amount_nominal(P: float, j: float, m: int, n: int) -> float:
+def get_accumulated_value_nominal(P: float, j: float, m: int, n: int) -> float:
     """ "
     Parameters
     ----------
@@ -256,23 +256,6 @@ def get_effective_discount_rate_nominal(f: float, m: int) -> float:
 
 # 34 - номінальна річна облікова ставка
 def get_nominal_account_rate(de: float, m: int) -> float:
-    """ "
-    Parameters
-    ----------
-    de : float
-        Ефективна облікова ставка
-    m: int
-        Кількість нарахувань у році
-    Returns
-    -------
-    f: float
-        номінальна річна облікова ставка
-    """
-    return m(1 - (1 - de) ^ (1 / m))
-
-
-# 34 - номінальна річна облікова ставка
-def get_effective_discount_rate(de: float, m: int) -> float:
     """ "
     Parameters
     ----------
