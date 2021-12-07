@@ -18,7 +18,7 @@ ItemDelegate {
     TextField {
         selectByMouse: true
         horizontalAlignment: TextInput.AlignRight
-        text: "" + objectValue
+        text: "" + model.defaultValue
         font.pointSize: 12
         leftPadding: label.width
         width: parent.width
@@ -26,15 +26,18 @@ ItemDelegate {
         validator: validators.getValidator(model.validator)
 
         onTextEdited: {
-            let value = parseFloat(text.replace(",", "."))
-            if (value < validator.bottom)
-                value = validator.bottom
-            if (value > validator.top)
-                value = validator.top
-            if (isNaN(value))
-                value = 0
-            text = "" + value
-            parent.objectValue = value
+            objectValue = parseFloat(text)
+//            let value = parseFloat(text.replace(",", "."))
+//            console.log(value)
+//            if (value < validator.bottom) {
+//                return
+//            }
+//            if (value > validator.top) {
+//                return
+//            }
+//            if (isNaN(value))
+//                value = 0
+//            parent.objectValue = value
         }
     }
 }

@@ -22,7 +22,7 @@ ListModel {
             ListElement {
                 name: "i"
                 label: "i"
-                defaultValue: 0.25
+                defaultValue: 25
                 validator: "percent"
             }
         ]
@@ -62,7 +62,7 @@ ListModel {
             ListElement {
                 name: "i"
                 label: "i"
-                defaultValue: 0.15
+                defaultValue: 15
                 validator: "percent"
             }
         ]
