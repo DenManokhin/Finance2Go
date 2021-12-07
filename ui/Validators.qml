@@ -1,31 +1,19 @@
 import QtQuick 2.15
 
 Item {
-    DoubleValidator {
+    RegularExpressionValidator {
         id: yearsValidator
-        bottom: 0
-        top: 100
-        decimals: 2
-        locale: "uk_UA"
-        notation: DoubleValidator.StandardNotation
+        regularExpression: /^((\d{1,2})?(\.\d{1,2})?)$/
     }
 
-    DoubleValidator {
+    RegularExpressionValidator {
         id: moneyValidator
-        bottom: 0
-        top: 100000000000000000000
-        decimals: 2
-        locale: "uk_UA"
-        notation: DoubleValidator.StandardNotation
+        regularExpression: /^\d{1,10}(\.\d{1,2})?$/
     }
 
-    DoubleValidator {
+    RegularExpressionValidator {
         id: percentValidator
-        bottom: 0
-        top: 1
-        decimals: 4
-        locale: "uk_UA"
-        notation: DoubleValidator.StandardNotation
+        regularExpression: /^100|(\d{1,2}(\.\d{1,2})?)$/
     }
 
     function getValidator(name) {
